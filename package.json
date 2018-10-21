@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=prd next start",
+    "start": "NODE_ENV=prd node server",
     "dev": "NODE_ENV=dev nodemon server",
     "build": "next build"
   },
@@ -20,7 +20,7 @@
     "koa": "^2.5.3",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
-    "next": ">=7.0.2",
+    "next": "latest",
     "node-sass": "^4.9.4",
     "react": "^16.5.2",
     "react-dom": "^16.5.2"

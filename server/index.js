@@ -2,6 +2,7 @@ const Koa = require('koa')
 const bodyParser = require('koa-bodyparser')
 const router = require('koa-router')()
 const next = require('next')
+const CONFIG = require('../config')
 const dev = process.env.NODE_ENV !== 'prd'
 const app = next({
   dev
@@ -21,9 +22,9 @@ app.prepare().then(() => {
     await next()
   })
   server.use(router.routes())
-  server.listen(8080, (err) => {
+  server.listen(CONFIG.PORT, (err) => {
     if (err) throw err
-    console.log(`> Ready on http://localhost:8080`)
+    console.log(`> Ready on http://localhost:${CONFIG.PORT}`)
   })
 }).catch(ex => {
   console.error(ex.stack)
