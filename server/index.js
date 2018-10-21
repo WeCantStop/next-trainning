@@ -2,7 +2,7 @@ const Koa = require('koa')
 const bodyParser = require('koa-bodyparser')
 const router = require('koa-router')()
 const next = require('next')
-const dev = process.env.NODE_ENV !== 'production'
+const dev = process.env.NODE_ENV !== 'prd'
 const app = next({
   dev
 })

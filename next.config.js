@@ -1,6 +1,13 @@
 const withTypescript = require('@zeit/next-typescript')
-module.exports = withTypescript({
-  webpack(config) {
+const withSass = require('@zeit/next-sass')
+
+module.exports = withTypescript(withSass({
+  pageExtensions: ['jsx', 'js'],
+  distDir: 'dist',
+  publicRuntimeConfig: {
+    ENV: process.env.NODE_ENV
+  },
+  webpack(config, { buildId, dev, isServer, defaultLoaders }) {
     return config
   }
-})
+}))

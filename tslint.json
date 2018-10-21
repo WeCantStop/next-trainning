@@ -1,6 +1,6 @@
 {
   "extends": "tslint:recommended",
-  "rulesDirectory": ["pages/"],
+  "rulesDirectory": ["pages/", "components", "config"],
   "defaultSeverity": "error",
   "rules": {
     "typedef-whitespace": false,

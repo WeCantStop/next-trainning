@@ -1,11 +1,12 @@
 import Link from 'next/link'
+import './index.scss'
 
 const About = () => {
   return (
     <div>
       <div>About Page</div>
-      <Link href="/index">
-        <a>Go home</a>
+      <Link href="/home">
+        <a className="example">Go home</a>
       </Link>
     </div>
   )

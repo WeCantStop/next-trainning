@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "next start",
-    "dev": "nodemon NODE_ENV=dev server",
+    "start": "NODE_ENV=prd next start",
+    "dev": "NODE_ENV=dev nodemon server",
     "build": "next build"
   },
   "keywords": [],
@@ -15,11 +15,13 @@
     "@types/next": "^7.0.3",
     "@types/react": "^16.4.18",
     "@types/react-dom": "^16.0.9",
+    "@zeit/next-sass": "^1.0.1",
     "@zeit/next-typescript": "^1.1.1",
     "koa": "^2.5.3",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "next": ">=7.0.2",
+    "node-sass": "^4.9.4",
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
   },
