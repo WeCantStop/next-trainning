@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import Link from 'next/link'
 
+import { Button } from 'antd'
 import Header from 'components/common/Header'
 import './index.scss'
 
@@ -13,18 +14,17 @@ class Home extends Component {
     super(props)
   }
 
-  componentDidMount() {
-    console.log(window.DEPLOY_ENV)
-  }
-
   render() {
     return (
       <div>
         <Header />
         <p>Home Page</p>
-        <Link href="/about">
-          <a className="example">Go About</a>
-        </Link>
+        <Button type="primary">Ant Btn</Button>
+        <div>
+          <Link href="/about">
+            <Button type="dashed" className="example">Go About</Button>
+          </Link>
+        </div>
       </div>
     )
   }

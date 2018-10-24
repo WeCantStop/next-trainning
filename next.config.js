@@ -1,8 +1,13 @@
 const withTypescript = require('@zeit/next-typescript')
 const withSass = require('@zeit/next-sass')
+const withcss = require('@zeit/next-css')
 const path = require('path')
 
-module.exports = withTypescript(withSass({
+if (typeof require !== 'undefined') {
+  require.extensions['.css'] = (file) => { }
+}
+
+module.exports = withTypescript(withcss(withSass({
   pageExtensions: ['jsx', 'js'],
   distDir: 'dist',
   publicRuntimeConfig: {
@@ -12,4 +17,4 @@ module.exports = withTypescript(withSass({
     config.resolve.alias.components = path.resolve('client/components')
     return config
   }
-}))
+})))
