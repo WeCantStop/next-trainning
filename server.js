@@ -2,8 +2,11 @@ const Koa = require('koa')
 const bodyParser = require('koa-bodyparser')
 const router = require('koa-router')()
 const next = require('next')
+const registerRouter = require('./server/router/')
+
 const CONFIG = require('./config/index')
 const dev = process.env.NODE_ENV !== 'prd'
+
 const app = next({
   dev
 })
@@ -12,7 +15,7 @@ const handle = app.getRequestHandler()
 app.prepare().then(() => {
   const server = new Koa()
   server.use(bodyParser())
-  // async await
+  server.use(registerRouter())
   router.get('*', async (ctx, next) => {
     await handle(ctx.req, ctx.res)
     ctx.response = false

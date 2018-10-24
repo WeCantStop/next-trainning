@@ -5,11 +5,7 @@ import { Button } from 'antd'
 import Header from 'components/common/Header'
 import './index.scss'
 
-declare const window: {
-  DEPLOY_ENV: string
-}
 class Home extends Component {
-
   constructor(props) {
     super(props)
   }
