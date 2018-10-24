@@ -1,7 +1,7 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 
 const Eruda = () => <div>
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/eruda"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/eruda" />
   <script dangerouslySetInnerHTML={{ __html: `eruda.init()` }} />
 </div>
 
@@ -21,6 +21,7 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
+        <script dangerouslySetInnerHTML={{ __html: `window.DEPLOY_ENV='${process.env.DEPLOY_ENV}';` }} />
         {process.env.DEPLOY_ENV !== 'prd' && <Eruda />}
       </html>
     )

@@ -3,6 +3,9 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
+    "paths": {
+      "components/*": ["client/components/*"]
+    },
     "jsx": "preserve",
     "lib": ["dom", "es2017"],
     "module": "esnext",
@@ -14,7 +17,6 @@
     "removeComments": false,
     "skipLibCheck": true,
     "sourceMap": true,
-    "strict": true,
     "target": "esnext"
   }
 }

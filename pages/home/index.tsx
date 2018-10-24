@@ -1,19 +1,26 @@
 import { Component } from 'react'
-
-import getConfig from 'next/config'
 import Link from 'next/link'
+
+import Header from 'components/common/Header'
 import './index.scss'
 
+declare const window: {
+  DEPLOY_ENV: string
+}
 class Home extends Component {
 
+  constructor(props) {
+    super(props)
+  }
+
   componentDidMount() {
-    const { publicRuntimeConfig } = getConfig()
-    console.log(publicRuntimeConfig)
+    console.log(window.DEPLOY_ENV)
   }
 
   render() {
     return (
       <div>
+        <Header />
         <p>Home Page</p>
         <Link href="/about">
           <a className="example">Go About</a>

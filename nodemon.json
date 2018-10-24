@@ -4,16 +4,13 @@
     ".git",
     "node_modules/**/node_modules"
   ],
-  "execMap": {
-    "": "node"
-  },
   "events": {
     "restart": "osascript -e 'display notification \"App restarted due to:\n'$FILENAME'\" with title \"nodemon\"'"
   },
   "watch": [
     "server/**/*",
+    "config/**/*",
     "server.js"
   ],
-  "ext": "js json",
-  "legacy-watch": false
+  "ext": "js json"
 }

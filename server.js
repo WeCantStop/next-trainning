@@ -3,7 +3,7 @@ const bodyParser = require('koa-bodyparser')
 const router = require('koa-router')()
 const next = require('next')
 const CONFIG = require('./config/index')
-const logger = require('./server/middleware/testMid')
+// import CONFIG from './config/index'
 const dev = process.env.NODE_ENV !== 'prd'
 const app = next({
   dev
