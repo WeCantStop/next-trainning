@@ -5,7 +5,7 @@ module.exports = withTypescript(withSass({
   pageExtensions: ['jsx', 'js'],
   distDir: 'dist',
   publicRuntimeConfig: {
-    ENV: process.env.NODE_ENV
+    deployEnv: process.env.DEPLOY_ENV
   },
   webpack(config, { buildId, dev, isServer, defaultLoaders }) {
     return config

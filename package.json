@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=prd node server",
-    "dev": "NODE_ENV=dev nodemon server",
+    "start": "NODE_ENV=prd DEPLOY_ENV=prd node server.js",
+    "dev": "cross-env DEPLOY_ENV=dev nodemon server.js",
     "build": "next build"
   },
   "keywords": [],
@@ -28,6 +28,7 @@
   "devDependencies": {
     "babel-macros": "^2.0.0",
     "babel-preset-react": "^6.24.1",
+    "cross-env": "^5.2.0",
     "nodemon": "^1.18.4",
     "preval.macro": "^3.0.0",
     "tslint": "^5.11.0",
