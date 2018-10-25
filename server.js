@@ -16,15 +16,18 @@ app.prepare().then(() => {
   const server = new Koa()
   server.use(bodyParser())
   server.use(registerRouter())
-  router.get('*', async (ctx, next) => {
-    await handle(ctx.req, ctx.res)
-    ctx.response = false
+  // server.use(router.routes())
+  server.use(async (ctx, nxt) => {
+    if (ctx.url.indexOf('/api/') === -1) {
+      return nxt()
+    }
+    return ctx
   })
   server.use(async (ctx, next) => {
     ctx.res.statusCode = 200
-    await next()
+    await handle(ctx.req, ctx.res)
+    ctx.response = false
   })
-  server.use(router.routes())
   server.listen(CONFIG.PORT, (err) => {
     if (err) throw err
     console.log(`> Ready on http://localhost:${CONFIG.PORT}`)

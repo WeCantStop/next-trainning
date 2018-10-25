@@ -10,7 +10,8 @@
   "watch": [
     "server/**/*",
     "config/**/*",
-    "server.js"
+    "server.js",
+    "tools/*/*"
   ],
   "ext": "js json"
 }
