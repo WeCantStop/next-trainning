@@ -12,7 +12,7 @@ class Home extends Component {
   }
 
   componentDidMount = async () => {
-    const res = await request({url: '/api/one'})
+    const res = await request({url: '/api/zhihu/latest'})
     console.log(res)
   }
 

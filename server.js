@@ -16,7 +16,6 @@ app.prepare().then(() => {
   const server = new Koa()
   server.use(bodyParser())
   server.use(registerRouter())
-  // server.use(router.routes())
   server.use(async (ctx, nxt) => {
     if (ctx.url.indexOf('/api/') === -1) {
       return nxt()
