@@ -3,7 +3,7 @@ const glob = require('glob')
 const { resolve } = require('path')
 
 registerRouter = () => {
-  let routers = [];
+  let routers = []
   glob.sync(resolve(__dirname, './', '**/*.js'))
     .filter(value => (value.indexOf('index.js') === -1))
     .map(router => {
