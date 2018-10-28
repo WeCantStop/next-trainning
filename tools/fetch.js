@@ -1,8 +1,8 @@
-require('es6-promise').polyfill()
+// require('es6-promise').polyfill()
 require('isomorphic-fetch')
 
 const LOCAL_HOST = '127.0.0.1'
-const LOCAL_PORT = process.env.port || 8080
+const LOCAL_PORT = process.env.port || 8081
 const DEFAULT_OPTIONS = {
   method: 'GET',
   credentials: 'include',

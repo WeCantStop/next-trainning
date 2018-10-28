@@ -1,0 +1,14 @@
+.stort-wrap {
+  width: 100%;
+  display: -webkit-box;
+  overflow-x: scroll;
+
+  .story-item {
+    width: 33%;
+    margin-right: 10px;
+
+    img {
+      width: 100%;
+    }
+  }
+}

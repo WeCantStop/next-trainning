@@ -1,32 +1,32 @@
 import { Component } from 'react'
-import Link from 'next/link'
 
-import { Button } from 'antd'
-import {request} from '../../tools/fetch'
+
+import { request } from '../../tools/fetch'
 import Header from 'components/common/Header'
+import StoryList from 'components/home/StoryList'
 import './index.scss'
 
-class Home extends Component {
+class Home extends Component<any> {
+
+  static getInitialProps = async () => {
+    const res = await request({ url: '/api/zhihu/latest' })
+    return { latestData: res }
+  }
+
   constructor(props) {
     super(props)
   }
 
   componentDidMount = async () => {
-    const res = await request({url: '/api/zhihu/latest'})
-    console.log(res)
+    console.log(this.props.latestData)
   }
 
   render() {
+    const latestData = this.props.latestData
     return (
       <div>
         <Header />
-        <p>Home Page</p>
-        <Button type="primary">Ant Btn</Button>
-        <div>
-          <Link href="/about">
-            <Button type="dashed" className="example">Go About</Button>
-          </Link>
-        </div>
+        <StoryList stories={latestData.stories} />
       </div>
     )
   }
