@@ -37,7 +37,7 @@ const Store = types
       self.testName = 'testName'
     }
 
-    const fetchData = async () => {
+    const initData = async () => {
       const res = await request({ url: '/api/zhihu/latest' })
       const storeData = getSnapshot(store)
       store = Store.create({
@@ -52,38 +52,20 @@ const Store = types
       changeName,
       increaseCount,
       changeTestName,
-      fetchData
+      initData
     }
   })
 
-// 初始化 Store
-const initializeStore = (isServer, snapshot = null) => {
-  if (isServer) {
-    store = Store.create({
-      name: 'will',
-      latestData: {
-      testDate: ''
-      }
-    });
-  }
-  console.log('init store1')
-  console.log(store)
-
-  if (store === null) {
-    console.log('init store2')
-    store = Store.create({
-      name: 'will',
-      latestData: {
-      testDate: ''
-      }
-    });
+const initializeStore = (snapshot = null) => {
+  if (typeof window === 'undefined' || store === null) {
+    store = Store.create()
   }
   if (snapshot) {
     applySnapshot(store, snapshot);
   }
-  return store;
-};
+  return store
+}
 
 export {
   initializeStore
-};
+}

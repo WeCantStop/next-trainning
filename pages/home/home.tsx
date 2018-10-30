@@ -10,20 +10,18 @@ import './index.scss'
 class Home extends Component<any> {
 
   static getInitialProps = async () => {
-    const isServer = (typeof window === 'undefined')
-    let store = initializeStore(isServer)
-    store = await store.fetchData()
+    let store = initializeStore()
+    store = await store.initData()
 
     return {
-      initialState: store,
-      isServer,
+      initialState: store
     }
   }
 
   private store
   constructor(props) {
     super(props)
-    this.store = initializeStore(props.isServer, props.initialState)
+    this.store = initializeStore(props.initialState)
   }
 
   increaseCount = () => {

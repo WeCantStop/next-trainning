@@ -6,6 +6,10 @@ import './index.scss'
 @observer
 class StoryList extends Component<any> {
 
+  showStoryId = (id) => {
+    alert(id)
+  }
+
   render() {
     const { name, count, increaseCount, testName, changeTestName, testDate, latestStory } = this.props.store
     return (
@@ -22,7 +26,7 @@ class StoryList extends Component<any> {
           latestStory.map((item, index) => {
             return (
               <div key={index} className="story-item">
-                <div>
+                <div onClick={this.showStoryId.bind(this, item.id)}>
                   <img src={item.image} alt="故事图片" />
                 </div>
                 <div key={index}>{item.title}</div>
