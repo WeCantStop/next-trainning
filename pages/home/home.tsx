@@ -1,27 +1,22 @@
 import { Component } from 'react'
-import { Provider } from 'mobx-react'
-import { getSnapshot } from 'mobx-state-tree'
+import { observer, Provider } from 'mobx-react'
+import Router from 'next/router'
 import { initializeStore } from '../../store/common'
-
-
-import { request } from '../../tools/fetch'
 import Header from 'components/common/Header'
 import StoryList from 'components/home/StoryList'
 import './index.scss'
 
-
+@observer
 class Home extends Component<any> {
 
   static getInitialProps = async () => {
-    const res = await request({ url: '/api/zhihu/latest' })
-
     const isServer = (typeof window === 'undefined')
-    const store = initializeStore(isServer)
-    store.changeName('lucy')
+    let store = initializeStore(isServer)
+    store = await store.fetchData()
+
     return {
-      initialState: getSnapshot(store),
+      initialState: store,
       isServer,
-      latestData: res,
     }
   }
 
@@ -31,18 +26,27 @@ class Home extends Component<any> {
     this.store = initializeStore(props.isServer, props.initialState)
   }
 
-  componentDidMount = async () => {
-    console.log(this.props.latestData)
+  increaseCount = () => {
+    this.store.increaseCount()
+  }
+
+  goHello = () => {
+    Router.push('/examples/hello')
   }
 
   render() {
-    const latestData = this.props.latestData
+    const { name, count, testName, testDate } = this.store
     return (
       <Provider store={this.store}>
         <div>
           <Header />
-          <StoryList stories={latestData.stories} />
-          <div>{this.store.name}</div>
+          <StoryList stories={this.store.stories} />
+          <div>{name}</div>
+          <div>{testName}</div>
+          <div>{count}</div>
+          <button onClick={this.increaseCount}>add one</button>
+          <div>{testDate}</div>
+          <div onClick={this.goHello}>go Hello Page</div>
         </div>
       </Provider>
     )

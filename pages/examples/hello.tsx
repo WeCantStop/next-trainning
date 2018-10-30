@@ -1,16 +1,18 @@
 import { Component } from 'react'
+import Router from 'next/router'
 
 class Hello extends Component<any> {
-  static getInitialProps({ req }: any) {
-    console.log(req.headers.cookie)
 
-    return { test: 'test' }
+  goHome = () => {
+    Router.push('/home/home')
   }
 
   render() {
-    console.log(this.props.test)
     return (
-      <div>Hello Page</div>
+      <div>
+        <div>Hello Page</div>
+        <button onClick={this.goHome}>go Home</button>
+      </div>
     )
   }
 }

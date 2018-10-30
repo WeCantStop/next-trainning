@@ -13,6 +13,7 @@
     "noEmit": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "experimentalDecorators": true,
     "preserveConstEnums": true,
     "removeComments": false,
     "skipLibCheck": true,
