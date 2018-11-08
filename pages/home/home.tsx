@@ -44,7 +44,7 @@ class Home extends Component<any> {
           <div>{count}</div>
           <button onClick={this.increaseCount}>add one</button>
           <div>{testDate}</div>
-          <h3 onClick={this.goHello}>go Hello Page</h3>
+          <h4 onClick={this.goHello}>go Hello Page</h4>
         </div>
       </Provider>
     )
