@@ -9,6 +9,7 @@
     "build": "next build",
     "export": "npm run build && next export"
   },
+  "private": true,
   "keywords": [],
   "author": "",
   "license": "ISC",
