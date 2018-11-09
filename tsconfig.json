@@ -4,7 +4,7 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
-      "components/*": ["client/components/*"]
+      "@components/*": ["client/components/*"]
     },
     "jsx": "preserve",
     "lib": ["dom", "es2017"],

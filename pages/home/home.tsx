@@ -2,9 +2,11 @@ import { Component } from 'react'
 import { observer, Provider } from 'mobx-react'
 import Router from 'next/router'
 import { initializeStore } from '../../store/common'
-import Header from 'components/common/Header'
-import StoryList from 'components/home/StoryList'
+import Header from '@components/common/Header'
+import StoryList from '@components/home/StoryList'
 import './index.scss'
+
+import { Picker, List } from 'antd-mobile'
 
 @observer
 class Home extends Component<any> {
@@ -33,6 +35,10 @@ class Home extends Component<any> {
   }
 
   render() {
+    const district = [
+      {value: '1', label: 'one'},
+      {value: '2', label: 'two'}
+    ]
     const { name, count, testName, testDate } = this.store
     return (
       <Provider store={this.store}>
@@ -45,6 +51,9 @@ class Home extends Component<any> {
           <button onClick={this.increaseCount}>add one</button>
           <div>{testDate}</div>
           <h3 onClick={this.goHello}>go Hello Page</h3>
+          <Picker data={district} cols={1} className="forss">
+            <List.Item arrow="horizontal">Single</List.Item>
+          </Picker>
         </div>
       </Provider>
     )

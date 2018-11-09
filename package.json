@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.0.0-0",
     "@babel/plugin-proposal-decorators": "^7.1.2",
     "@types/next": "^7.0.3",
     "@types/react": "^16.4.18",
@@ -20,8 +21,7 @@
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "@zeit/next-typescript": "^1.1.1",
-    "@babel/core": "^7.0.0-0",
-    "antd": "^3.10.2",
+    "antd-mobile": "^2.2.6",
     "babel-plugin-import": "^1.10.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "glob": "^7.1.3",

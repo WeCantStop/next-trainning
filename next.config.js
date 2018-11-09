@@ -14,7 +14,7 @@ module.exports = withTypescript(withcss(withSass({
     deployEnv: process.env.DEPLOY_ENV
   },
   webpack(config, { buildId, dev, isServer, defaultLoaders }) {
-    config.resolve.alias.components = path.resolve('client/components')
+    config.resolve.alias['@components'] = path.resolve('client/components')
     return config
   }
 })))
