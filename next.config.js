@@ -9,7 +9,6 @@ if (typeof require !== 'undefined') {
 
 module.exports = withTypescript(withcss(withSass({
   pageExtensions: ['jsx', 'js'],
-  distDir: 'dist',
   publicRuntimeConfig: {
     deployEnv: process.env.DEPLOY_ENV
   },
