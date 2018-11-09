@@ -1,7 +1,4 @@
 {
-  "version": 2,
-  "alias": ["will-next-training.now.sh"],
-  "builds": [
-    { "src": "next.config.js", "use": "@now/next" }
-  ]
+  "name": "next-training",
+  "alias": ["will-next-training.now.sh"]
 }
