@@ -1,4 +1,5 @@
 {
+  "version": 2,
   "alias": ["will-next-training.now.sh"],
   "builds": [
     { "src": "package.json", "use": "@now/next" }
