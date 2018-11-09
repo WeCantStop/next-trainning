@@ -1,3 +1,5 @@
 {
+  "version": 1,
+  "name": "next-training",
   "alias": ["will-next-training.now.sh"]
 }
