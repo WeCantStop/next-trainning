@@ -1,3 +1,6 @@
 {
-  "alias": ["will-next-training.now.sh"]
+  "alias": ["will-next-training.now.sh"],
+  "builds": [
+    { "src": "package.json", "use": "@now/next" }
+  ]
 }
