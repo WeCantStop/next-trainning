@@ -4,7 +4,7 @@ import Router from 'next/router'
 class Hello extends Component<any> {
 
   goHome = () => {
-    Router.push('/home/home')
+    Router.push('/')
   }
 
   render() {

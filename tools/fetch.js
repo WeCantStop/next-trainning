@@ -23,4 +23,11 @@ const request = (options) => {
   return fetch(url, { method, headers, body }).then(res => res.json())
 }
 
-module.exports = { request }
+const get = (options) => request(options)
+
+const post = (options) => request({
+  method: 'POST',
+  ...options
+})
+
+module.exports = { request, get, post }
