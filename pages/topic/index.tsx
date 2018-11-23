@@ -21,10 +21,11 @@ class Topic extends Component<any> {
 
   render = () => {
     console.log(this.topic)
-    const { title } = this.topic
+    const { title, content } = this.topic
     return (
       <div>
         <div>{title}</div>
+        <div dangerouslySetInnerHTML={{__html: content}} />
       </div>
     )
   }

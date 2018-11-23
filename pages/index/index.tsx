@@ -45,7 +45,12 @@ class Index extends Component<any> {
           {
             topics.map((item, index) => {
               return (
-                <li key={index} onClick={this.goTopic.bind(this, item)}>{item.title}</li>
+                <li key={index} onClick={this.goTopic.bind(this, item)}>
+                  <div>{item.title}</div>
+                  <div>
+                    <img src={item.author.avatar_url} />
+                  </div>
+                </li>
               )
             })
           }
