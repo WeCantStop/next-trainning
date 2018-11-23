@@ -1,6 +1,6 @@
 const Router = require('koa-router')
-const { request } = require('./fetch')
-const serverRequest = require('../server/controller')
+const { request } = require('../../../tools/fetch')
+const serverRequest = require('../../controller')
 
 const router = new Router()
 

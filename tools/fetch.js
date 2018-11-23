@@ -18,7 +18,7 @@ const request = (options) => {
   let { url, method, headers, data, getType } = requestOption
   let extraldata = {}
 
-  method = method.toUpperCase()
+  method = !!method ? method.toUpperCase() : 'GET'
   if (typeof window === 'undefined' && !url.startsWith('http')) {
     url = `http://${LOCAL_HOST}:${LOCAL_PORT}${url}`
   }
