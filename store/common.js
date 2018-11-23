@@ -38,14 +38,14 @@ const Store = types
     }
 
     const initData = async () => {
-      const res = await request({ url: '/api/zhihu/latest' })
-      const storeData = getSnapshot(store)
-      store = Store.create({
-        ...storeData,
-        testDate: res.date,
-        latestStory: res.top_stories
-      })
-      return Promise.resolve(getSnapshot(store))
+      // const res = await request({ url: '/api/zhihu/latest' })
+      // const storeData = getSnapshot(store)
+      // store = Store.create({
+      //   ...storeData,
+      //   testDate: res.date,
+      //   latestStory: res.top_stories
+      // })
+      // return Promise.resolve(getSnapshot(store))
     }
 
     return {

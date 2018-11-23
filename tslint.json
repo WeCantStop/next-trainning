@@ -13,6 +13,7 @@
     "one-line": false,
     "no-console": false,
     "no-debugger": false,
+    "object-literal-sort-keys": false,
     "indent": [true, "spaces", 2],
     "quotemark": [true, "single", "jsx-double", "avoid-escape"],
     "semicolon": [true, "never", "ignore-interfaces"],

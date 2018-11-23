@@ -1,5 +1,6 @@
 // require('es6-promise').polyfill()
 require('isomorphic-fetch')
+const { serializeFunc } = require('./index')
 
 const LOCAL_HOST = '127.0.0.1'
 const LOCAL_PORT = process.env.port || 8081
@@ -14,19 +15,32 @@ const DEFAULT_OPTIONS = {
 
 const request = (options) => {
   const requestOption = Object.assign(DEFAULT_OPTIONS, options)
-  let { url, method, headers, body } = requestOption
+  let { url, method, headers, data, getType } = requestOption
+  let extraldata = {}
+
   method = method.toUpperCase()
   if (typeof window === 'undefined' && !url.startsWith('http')) {
     url = `http://${LOCAL_HOST}:${LOCAL_PORT}${url}`
   }
 
-  return fetch(url, { method, headers, body }).then(res => res.json())
+  // get 请求
+  if (method === 'GET') {
+    if (!!data) {
+      url = `${url}?${serializeFunc(data)}`
+    }
+    extraldata = { method, headers }
+  } else {
+  // post 请求
+    extraldata = { method, headers, body: data }
+  }
+
+  return fetch(url, extraldata).then(res => res.json())
 }
 
 const get = (options) => request(options)
 
 const post = (options) => request({
-  method: 'POST',
+  method: 'post',
   ...options
 })
 

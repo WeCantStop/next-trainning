@@ -7,13 +7,13 @@ const API_PREFIX = 'https://cnodejs.org/api/v1'
 const genUrl = (pathName) => `${API_PREFIX}${pathName}`
 
 const APIS = [
-  { type: 'get', route: '/cnode/topics', url: '/topics' },
-  { type: 'get', route: '/cnode/topic', url: '/topic/5433d5e4e737cbe96dcef312' },
+  { type: 'get', getType: 'query', route: '/cnode/topics', url: '/topics',  },
+  { type: 'get', getType: 'param', route: '/cnode/topic', url: '/topic',  },
 ]
 
 APIS.forEach(item => {
-  const { type, route, url } = item
-  router[type](route, serverRequest({ url: genUrl(url) }))
+  const { type, route, url, getType } = item
+  router[type](route, serverRequest({ url: genUrl(url), method: type, getType }))
 })
 
 module.exports = router

@@ -1,43 +1,58 @@
 import { Component } from 'react'
-import { observer, Provider } from 'mobx-react'
-import { initializeStore } from '../../store/common'
-import { request, get } from '../../tools/fetch'
+import Router from 'next/router'
+import { get } from '../../tools/fetch'
 import './index.scss'
 
-@observer
-class Home extends Component<any> {
+class Index extends Component<any> {
 
   static getInitialProps = async () => {
-    let store = initializeStore()
-    store = await store.initData()
+    const topics = await get({
+      url: '/api/cnode/topics',
+      data: {
+        limit: 5,
+        page: 1,
+        tab: 'all'
+      }
+    })
 
-    return {
-      initialState: store
-    }
+    return { topics: topics.data }
   }
 
-  private store
+  private initialData: {
+    topics: any[]
+  }
   constructor(props) {
     super(props)
-    this.store = initializeStore(props.initialState)
+    this.initialData = props
   }
 
-  componentDidMount = async() => {
-    const res = await get({ url: '/api/cnode/topics' })
-    console.log(res)
-    const res2 = await get({ url: '/api/cnode/topic'})
-    console.log(res2)
+  goTopic = (topic) => {
+    console.log(topic)
+    Router.push({
+      pathname: '/topic',
+      query: {
+        id: topic.id
+      }
+    })
   }
 
   render() {
+    const { topics } = this.initialData
+    console.log(topics)
     return (
-      <Provider store={this.store}>
-        <div>
-          <h3>title</h3>
-        </div>
-      </Provider>
+      <div>
+        <ul>
+          {
+            topics.map((item, index) => {
+              return (
+                <li key={index} onClick={this.goTopic.bind(this, item)}>{item.title}</li>
+              )
+            })
+          }
+        </ul>
+      </div>
     )
   }
 }
 
-export default Home
+export default Index
