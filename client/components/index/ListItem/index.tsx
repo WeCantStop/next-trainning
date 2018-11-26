@@ -27,11 +27,15 @@ class ListItem extends Component<any> {
     }
   }
 
+  clickItem = (data) => {
+    this.props.clickItem(data)
+  }
+
   render() {
     const { data } = this.props
 
     return (
-      <li>
+      <li onClick={this.clickItem.bind(this, data)}>
         <div className="avatar">
           <img src={data.author.avatar_url} />
         </div>

@@ -25,7 +25,7 @@ class Topic extends Component<any> {
     return (
       <div>
         <div>{title}</div>
-        <div dangerouslySetInnerHTML={{__html: content}} />
+        <div className="rich-container" dangerouslySetInnerHTML={{__html: content}} />
       </div>
     )
   }
