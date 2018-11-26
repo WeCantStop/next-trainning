@@ -1,12 +1,7 @@
-.header-title {
-  margin-bottom: 10px;
-  text-align: center;
-  font-size: 20px;
-}
-
 header {
   height: 60px;
-  display: flex !important;
+  padding: 0 10px;
+  display: flex;
   background: #fff;
   z-index: 999;
   position: fixed;

@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import { get } from '../../tools/fetch'
 import './index.scss'
+import Rocket from '@components/index/Rocket'
 
 class Topic extends Component<any> {
 
@@ -26,6 +27,7 @@ class Topic extends Component<any> {
       <div>
         <div>{title}</div>
         <div className="rich-container" dangerouslySetInnerHTML={{__html: content}} />
+        <Rocket />
       </div>
     )
   }

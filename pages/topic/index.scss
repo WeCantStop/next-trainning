@@ -3,4 +3,12 @@
   img {
     width: 100%;
   }
+
+  a {
+    word-break: break-all;
+  }
+
+  pre {
+    overflow-x: scroll;
+  }
 }
