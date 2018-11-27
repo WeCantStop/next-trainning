@@ -1,17 +1,25 @@
 import { Component } from 'react'
 import Router from 'next/router'
 import { get } from '../../tools/fetch'
+import { Toast } from 'antd-mobile'
 import './index.scss'
 
 import Header from '@components/common/Header'
-import List from '@components/index/List'
-import Rocket from '@components/index/Rocket'
+import {List, Rocket} from '@components/index'
 
 const pageConfig = {
   limit: 20,
   page: 1,
   tab: 'all'
 }
+
+const TAB_CONFIG = [
+  { label: '全部', query: 'all', active: true },
+  { label: '精华', query: 'good', active: false },
+  { label: '分享', query: 'share', active: false },
+  { label: '问答', query: 'ask', active: false },
+  { label: '招聘', query: 'job', active: false }
+]
 
 class Index extends Component<any> {
 
@@ -32,6 +40,31 @@ class Index extends Component<any> {
     this.state = {
       topics: props.topics
     }
+  }
+
+  fetchData = async (pageconfig) => {
+    return await get({
+      url: '/api/cnode/topics',
+      data: pageconfig
+    })
+  }
+
+  loadData = async () => {
+    pageConfig.page++
+    Toast.loading('加载中...')
+    const res: any = await this.fetchData(pageConfig)
+    Toast.hide()
+    const topics = [...this.state.topics, ...res.data]
+    this.setState({ topics })
+  }
+
+  initData = async (tabType) => {
+    pageConfig.tab = tabType
+    Toast.loading('加载中...')
+    const res: any = await this.fetchData(pageConfig)
+    Toast.hide()
+    this.setState({ topics: res.data })
+    window.document.documentElement.scrollTop = 0
   }
 
   goTopic = (topic) => {
@@ -62,17 +95,7 @@ class Index extends Component<any> {
     })
   }
 
-  loadData = async () => {
-    pageConfig.page++
-    const res = await get({
-      url: '/api/cnode/topics',
-      data: pageConfig
-    })
-    const topics = [...this.state.topics, ...res.data]
-    this.setState({ topics })
-  }
-
-  clickItem = (data) => {
+  goDetail = (data) => {
     Router.push({
       pathname: '/topic',
       query: {
@@ -81,13 +104,26 @@ class Index extends Component<any> {
     })
   }
 
+  clickTab = (data) => {
+    if (pageConfig.tab !== data.query) {
+      TAB_CONFIG.forEach((item) => {
+        if (item.query === data.query) {
+          item.active = true
+        } else {
+          item.active = false
+        }
+      })
+      this.initData(data.query)
+    }
+  }
+
   render() {
     const { topics } = this.state
     console.log(topics)
     return (
       <div className="container">
-        <Header />
-        <List dataSource={topics} clickItem={this.clickItem} />
+        <Header options={TAB_CONFIG} clickTab={this.clickTab} />
+        <List dataSource={topics} clickItem={this.goDetail} />
         <Rocket />
       </div>
     )

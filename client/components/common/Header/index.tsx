@@ -1,17 +1,21 @@
 import './index.scss'
 
-export default () => {
+const LOGO = 'https://cnodejs.org/public/images/cnodejs.svg'
+
+export default ({ options, clickTab }) => {
+
   return (
     <header>
       <div className="logo">
-        <img src="https://cnodejs.org/public/images/cnodejs.svg" />
+        <img src={LOGO} />
       </div>
       <div className="tabs">
-        <div>全部</div>
-        <div>精华</div>
-        <div>分享</div>
-        <div>问答</div>
-        <div>招聘</div>
+        {
+          options.map((item, index) => {
+            return <div key={index} className={item.active ? 'active' : ''}
+              onClick={clickTab.bind(this, item)}>{item.label}</div>
+          })
+        }
       </div>
     </header>
   )
