@@ -1,4 +1,28 @@
+.topic-title {
+  background: #fff;
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  padding-left: 20px;
+
+  .topic-title-bandge {
+    margin-right: 6px;
+    font-weight: normal;
+    padding: 2px 6px;
+    font-size: 12px;
+    border-radius: 3px;
+    background: #80bd01;
+    color: #fff;
+  }
+}
+
 .rich-container {
+
+  background: #fff;
+  padding: 15px;
+  font-size: 16px;
+  line-height: 1.7em;
+  font-family: "Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB",STHeiti,sans-serif!important;
 
   img {
     width: 100%;

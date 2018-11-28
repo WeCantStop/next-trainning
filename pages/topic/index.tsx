@@ -1,6 +1,10 @@
 import { Component } from 'react'
+import Router from 'next/router'
 import { get } from '../../tools/fetch'
 import './index.scss'
+import { genTypeText } from '@components/index/ListItem'
+
+import Header from '@components/topic/Header'
 import Rocket from '@components/index/Rocket'
 
 class Topic extends Component<any> {
@@ -20,13 +24,21 @@ class Topic extends Component<any> {
     this.topic = props.topic
   }
 
+  goBack = () => {
+    Router.back()
+  }
+
   render = () => {
     console.log(this.topic)
     const { title, content } = this.topic
     return (
       <div>
-        <div>{title}</div>
-        <div className="rich-container" dangerouslySetInnerHTML={{__html: content}} />
+        <Header clickLeftBtn={this.goBack} />
+        <div className="topic-title">
+          <span className="topic-title-bandge">{genTypeText(this.topic)}</span>
+          <span>{title}</span>
+        </div>
+        <div className="rich-container" dangerouslySetInnerHTML={{ __html: content }} />
         <Rocket />
       </div>
     )

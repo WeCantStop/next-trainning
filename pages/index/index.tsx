@@ -5,7 +5,7 @@ import { Toast } from 'antd-mobile'
 import './index.scss'
 
 import Header from '@components/common/Header'
-import {List, Rocket} from '@components/index'
+import { List, Rocket } from '@components/index'
 
 const pageConfig = {
   limit: 20,
@@ -13,7 +13,7 @@ const pageConfig = {
   tab: 'all'
 }
 
-const TAB_CONFIG = [
+export const TAB_CONFIG = [
   { label: '全部', query: 'all', active: true },
   { label: '精华', query: 'good', active: false },
   { label: '分享', query: 'share', active: false },
@@ -81,18 +81,23 @@ class Index extends Component<any> {
     this.scrollListener()
   }
 
+  componentWillUnmount() {
+    window.document.removeEventListener('scroll', this.scrollEvent)
+  }
+
+  scrollEvent = () => {
+    const scrollTop = document.documentElement.scrollTop
+    const offsetHeight = document.body.offsetHeight
+    const availHeight = window.screen.availHeight
+
+    if (scrollTop + availHeight >= offsetHeight) {
+      console.log('init data')
+      this.loadData()
+    }
+  }
+
   scrollListener = () => {
-    window.document.addEventListener('scroll', () => {
-
-      const scrollTop = document.documentElement.scrollTop
-      const offsetHeight = document.body.offsetHeight
-      const availHeight = window.screen.availHeight
-
-      if (scrollTop + availHeight >= offsetHeight) {
-        console.log('init data')
-        this.loadData()
-      }
-    })
+    window.document.addEventListener('scroll', this.scrollEvent)
   }
 
   goDetail = (data) => {

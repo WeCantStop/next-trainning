@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import './index.scss'
 
-enum TabType {
+export enum TabType {
   top = '置顶',
   share = '分享',
   good = '精华',
@@ -9,23 +9,23 @@ enum TabType {
   job = '招聘',
 }
 
-class ListItem extends Component<any> {
-
-  genTypeText = (data) => {
-    if (data.top) {
-      return (
-        <span className="top-bandge">{TabType.top}</span>
-        )
-    } else if (data.good) {
-      return (
-        <span className="top-bandge">{TabType.good}</span>
+export const genTypeText = (data) => {
+  if (data.top) {
+    return (
+      <span className="top-bandge">{TabType.top}</span>
       )
-    } else {
-      return (
-        <span className="normal-bandge">{TabType[data.tab]}</span>
-      )
-    }
+  } else if (data.good) {
+    return (
+      <span className="top-bandge">{TabType.good}</span>
+    )
+  } else {
+    return (
+      <span className="normal-bandge">{TabType[data.tab]}</span>
+    )
   }
+}
+
+class ListItem extends Component<any> {
 
   clickItem = (data) => {
     this.props.clickItem(data)
@@ -42,7 +42,7 @@ class ListItem extends Component<any> {
         <div className="title">{data.title}</div>
         <div className="extra-info">
           <div className="tab-type">
-            {this.genTypeText(data)}
+            {genTypeText(data)}
           </div>
           <div className="reply-text">
             <span className="reply-count">{data.reply_count}</span>
