@@ -18,7 +18,7 @@ export const TAB_CONFIG = [
   { label: '精华', query: 'good', active: false },
   { label: '分享', query: 'share', active: false },
   { label: '问答', query: 'ask', active: false },
-  { label: '招聘', query: 'job', active: false }
+  { label: '招聘test', query: 'job', active: false }
 ]
 
 class Index extends Component<any> {

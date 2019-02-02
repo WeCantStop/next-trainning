@@ -30,9 +30,7 @@ class Topic extends Component<any> {
   }
 
   formatData = (date) => {
-    console.log(date)
-    console.log(new Date(date).getTime())
-    return moment(new Date().getTime()).format('YYYY-MM-DD HH:mm:ss')
+    return moment(new Date(date).getTime()).format('YYYY-MM-DD HH:mm:ss')
   }
 
   render = () => {
