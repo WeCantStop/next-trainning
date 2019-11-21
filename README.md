@@ -1,5 +1,5 @@
 # next-trainning
-利用cnode的API写得一个小demo
+利用cnode的API写的一个小demo
 
 ## Useage
 1. npm install
