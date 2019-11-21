@@ -13,6 +13,7 @@
     "one-line": false,
     "no-console": false,
     "no-debugger": false,
+    "no-shadowed-variable": false,
     "object-literal-sort-keys": false,
     "indent": [true, "spaces", 2],
     "quotemark": [true, "single", "jsx-double", "avoid-escape"],
@@ -22,6 +23,7 @@
     "linebreak-style": [true, "CR/LF"],
     "space-before-function-paren": [true, "asyncArrow"],
     "align": [true, "parameters", "statements", "members", "elements"],
+    "arrow-parens": [true, "ban-single-arg-parens"],
     "trailing-comma": [
       true,
       {
@@ -33,6 +35,6 @@
         },
         "esSpecCompliant": false
       }
-    ]
+    ],
   }
 }

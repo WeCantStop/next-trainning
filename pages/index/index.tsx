@@ -68,7 +68,6 @@ class Index extends Component<any> {
   }
 
   goTopic = (topic) => {
-    console.log(topic)
     Router.push({
       pathname: '/topic',
       query: {
@@ -91,7 +90,6 @@ class Index extends Component<any> {
     const availHeight = window.screen.availHeight
 
     if (scrollTop + availHeight >= offsetHeight) {
-      console.log('init data')
       this.loadData()
     }
   }
@@ -124,7 +122,6 @@ class Index extends Component<any> {
 
   render() {
     const { topics } = this.state
-    console.log(topics)
     return (
       <div className="container">
         <Header options={TAB_CONFIG} clickTab={this.clickTab} />
